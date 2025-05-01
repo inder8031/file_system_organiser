@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 let fs = require('fs');
 let path = require('path');
 let types = require('./utility.js').types;
@@ -27,7 +28,7 @@ switch(command) {
 function tree(dirPath) {
     // console.log("Tree command implemented");
     if(dirPath == undefined) {
-        console.log("Error: Path not provided");
+        treeHelper(process.cwd(), "");
         return;
     }
 
@@ -44,8 +45,7 @@ function tree(dirPath) {
 function organise(dirPath) {
     // console.log("Organise command implemented");
     if(dirPath == undefined) {
-        console.log("Error: Path not provided");
-        return;
+        dirPath = process.cwd();
     }
 
     let doesExistPath = fs.existsSync(dirPath);
